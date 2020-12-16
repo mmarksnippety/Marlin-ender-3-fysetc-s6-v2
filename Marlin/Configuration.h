@@ -744,11 +744,11 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 500, 500, 5, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 500, 500, 5, 100 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 50 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 200 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -757,7 +757,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 500, 500, 100, 5000 }
+#define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 100, 6000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -772,9 +772,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          500    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  500    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   500    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          800    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  2000    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   1600    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -958,14 +958,14 @@
  * X and Y offset
  *   Use a caliper or ruler to measure the distance from the tip of
  *   the Nozzle to the center-point of the Probe in the X and Y axes.
- * 
+ *
  * Z offset
  * - For the Z offset use your best known value and adjust at runtime.
  * - Common probes trigger below the nozzle and have negative values for Z offset.
  * - Probes triggering above the nozzle height are uncommon but do exist. When using
  *   probes such as this, carefully set Z_CLEARANCE_DEPLOY_PROBE and Z_CLEARANCE_BETWEEN_PROBES
  *   to avoid collisions during probing.
- * 
+ *
  * Tune and Adjust
  * -  Probe Offsets can be tuned at runtime with 'M851', LCD menus, babystepping, etc.
  * -  PROBE_OFFSET_WIZARD (configuration_adv.h) can be used for setting the Z offset.
